@@ -3,7 +3,7 @@ import logo from '../Images/ubuCon_logo_or.svg';
 import profile from '../Images/profile_placeholder.png';
 import startup from '../Sounds/startup.mp3';
 import {Audio} from 'remotion';
-
+import '../Fonts/font.css'
 
 
 
