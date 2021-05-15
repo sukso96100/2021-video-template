@@ -3,9 +3,16 @@ import {SessionInfo} from './HelloWorld/SessionInfo';
 import {Sponsors} from './HelloWorld/Sponsors';
 
 export const HelloWorld: React.FC<{
-	titleText: string;
-	titleColor: string;
-}> = ({titleText, titleColor}) => {
+	sessionTitle: string,
+	speakerName: string,
+	speakerBio: string,
+	speakerProfilePath: string
+}> = ({
+	sessionTitle,
+	speakerName,
+	speakerBio,
+	speakerProfilePath
+}) => {
 	const frame = useCurrentFrame();
 	const videoConfig = useVideoConfig();
 	const bgColorA = interpolateColors(frame,
@@ -30,23 +37,21 @@ export const HelloWorld: React.FC<{
 	return (
 		<div style={{
 			flex: 1, 
-			background: `linear-gradient(-45deg, ${bgColorA}, ${bgColorB})`,
-			animation: 'gradient 15s ease infinite',
-			
+			background: `linear-gradient(-45deg, ${bgColorA}, ${bgColorB})`			
 			}}>
 			<div style={{opacity}}>
-				<Sequence from={0} durationInFrames={videoConfig.durationInFrames}>
-					<SessionInfo transitionStart={transitionStart} />
-				</Sequence>
+				<Sequence 
+					from={0} 
+					durationInFrames={videoConfig.durationInFrames}>
+						<SessionInfo
+							sessionTitle={sessionTitle}
+							speakerName={speakerName}
+							speakerBio={speakerBio}
+							speakerProfilePath={speakerProfilePath}/>
+					</Sequence>
 				<Sequence from={20} durationInFrames={videoConfig.durationInFrames}>
 					<Sponsors transitionStart={transitionStart} />
 				</Sequence>
-				{/* <Sequence from={transitionStart + 10} durationInFrames={Infinity}>
-					<Title titleText={titleText} titleColor={titleColor} />
-				</Sequence>
-				<Sequence from={transitionStart + 50} durationInFrames={Infinity}>
-					<Subtitle />
-				</Sequence> */}
 			</div>
 		</div>
 	);

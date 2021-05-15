@@ -8,8 +8,16 @@ import '../Fonts/font.css'
 
 
 export const SessionInfo: React.FC<{
-	transitionStart: number;
-}> = ({ transitionStart }) => {
+	sessionTitle: string;
+	speakerName: string;
+	speakerBio: string;
+	speakerProfilePath: string;
+}> = ({ 
+	sessionTitle,
+	speakerName,
+	speakerBio,
+	speakerProfilePath
+ }) => {
 	const videoConfig = useVideoConfig();
 	const frame = useCurrentFrame();
 	const marginTop = frame > 20 ? 40 : 60 - frame;
@@ -50,7 +58,7 @@ export const SessionInfo: React.FC<{
 					fontSize: 80,
 					margin: 0
 				}}>
-					Example session title
+					{sessionTitle}
 				</span>
 				<span style={{
 					fontSize: 40,
@@ -58,13 +66,13 @@ export const SessionInfo: React.FC<{
 					marginLeft: 10,
 					fontWeight: 'bold'
 				}}>
-					Speaker name here
+					{speakerName}
 					</span>
 					<span style={{
 					fontSize: 40,
 					marginLeft: 10,
 				}}>
-					Speaker bio here
+					{speakerBio}
 					</span>
 			</div>
 

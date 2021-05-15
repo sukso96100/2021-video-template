@@ -14,8 +14,10 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					titleText: 'Ubucon Asia 2021',
-					titleColor: 'black',
+					sessionTitle: "[Session title here]",
+					speakerName: "[Speaker name here]",
+					speakerBio: "[Speaker bio here]",
+					speakerProfilePath: "string",
 				}}
 			/>
 			<Composition
@@ -25,6 +27,12 @@ export const RemotionVideo: React.FC = () => {
 				fps={30}
 				width={1920}
 				height={1080}
+				defaultProps={{
+					sessionTitle: "[Session title here]",
+					speakerName: "[Speaker name here]",
+					speakerBio: "[Speaker bio here]",
+					speakerProfilePath: "string",
+				}}
 			/>
 			<Composition
 				id="Sponsors"
