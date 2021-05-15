@@ -2,6 +2,7 @@ import {Composition} from 'remotion';
 import {HelloWorld} from './HelloWorld';
 import {SessionInfo} from './HelloWorld/SessionInfo';
 import {Sponsors} from './HelloWorld/Sponsors';
+import profile from './Images/profile_placeholder.png';
 
 export const RemotionVideo: React.FC = () => {
 	return (
@@ -17,7 +18,7 @@ export const RemotionVideo: React.FC = () => {
 					sessionTitle: "[Session title here]",
 					speakerName: "[Speaker name here]",
 					speakerBio: "[Speaker bio here]",
-					speakerProfilePath: "string",
+					speakerProfilePath: profile,
 				}}
 			/>
 			<Composition
@@ -31,7 +32,7 @@ export const RemotionVideo: React.FC = () => {
 					sessionTitle: "[Session title here]",
 					speakerName: "[Speaker name here]",
 					speakerBio: "[Speaker bio here]",
-					speakerProfilePath: "string",
+					speakerProfilePath: profile,
 				}}
 			/>
 			<Composition
