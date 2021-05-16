@@ -13,8 +13,8 @@
     }
   ],
   "sponsorLogos": [
-    "https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png",
-    "https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png"
+    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
   ],
   "videoPath": "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm",
   "duration": 30
