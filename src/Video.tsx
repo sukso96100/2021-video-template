@@ -1,24 +1,38 @@
-import {Composition} from 'remotion';
-import {HelloWorld} from './HelloWorld';
-import {SessionInfo} from './HelloWorld/SessionInfo';
-import {Sponsors} from './HelloWorld/Sponsors';
+import { Composition, delayRender, getInputProps, continueRender } from 'remotion';
+import { useState, useEffect } from 'react';
+import { VideoSeqs } from './VideoSeqs';
+import { SessionInfo } from './Layers/SessionInfo';
+import { Sponsors } from './Layers/Sponsors';
+import { VideoLayer } from './Layers/VideoLayer';
 import profile from './Images/profile_placeholder.png';
 
 export const RemotionVideo: React.FC = () => {
+	const inputProps = getInputProps()
+
 	return (
 		<>
 			<Composition
-				id="HelloWorld"
-				component={HelloWorld}
-				durationInFrames={150}
+				id="VideoSeqs"
+				component={VideoSeqs}
+				durationInFrames={200 + ((inputProps?.duration ?? 20) * 30)}
 				fps={30}
 				width={1920}
 				height={1080}
 				defaultProps={{
-					sessionTitle: "[Session title here]",
-					speakerName: "[Speaker name here]",
-					speakerBio: "[Speaker bio here]",
-					speakerProfilePath: profile,
+					videoPath: "",
+					sessionTitle: "Big Buck Bunny",
+					speakers:[
+						{
+							"name": "Bunny",
+							"bio": "Big Buck Bunny",
+							"photoPath": ""
+						},
+						{
+							"name": "Rodents",
+							"bio": "Three Villains",
+							"photoPath": ""
+						}
+					]
 				}}
 			/>
 			<Composition
@@ -29,10 +43,19 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					sessionTitle: "[Session title here]",
-					speakerName: "[Speaker name here]",
-					speakerBio: "[Speaker bio here]",
-					speakerProfilePath: profile,
+					sessionTitle: "Big Buck Bunny",
+					speakers:[
+						{
+							"name": "Bunny",
+							"bio": "Big Buck Bunny",
+							"photoPath": ""
+						},
+						{
+							"name": "Rodents",
+							"bio": "Three Villains",
+							"photoPath": ""
+						}
+					]
 				}}
 			/>
 			<Composition
@@ -42,7 +65,19 @@ export const RemotionVideo: React.FC = () => {
 				fps={30}
 				width={1920}
 				height={1080}
-				/>
+			/>
+			<Composition
+				id="VideoLayer"
+				component={VideoLayer}
+				fps={30}
+				durationInFrames={(inputProps?.duration ?? 20) * 30}
+				width={1920}
+				height={1080}
+				defaultProps={{
+					videoPath: "",
+					transitionStart: 200
+				}}
+			/>
 		</>
 	);
 };

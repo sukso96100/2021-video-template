@@ -1,6 +1,20 @@
 {
-  "sessionTitle": "Welcome to Ubucon Asia 2021!",
-	"speakerName": "Youngbin Han",
-	"speakerBio": "Organizer - Ubucon Asia 2021",
-	"speakerProfilePath": "https://avatars.githubusercontent.com/u/1916739?v=4"
+  "sessionTitle": "Big Buck Bunny",
+  "speakers":[
+    {
+      "name": "Bunny",
+      "bio": "Big Buck Bunny",
+      "photoPath": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
+    },
+    {
+      "name": "Rodents",
+      "bio": "Three Villains",
+      "photoPath": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
+    }
+  ],
+  "sponsors":[
+    
+  ],
+  "videoPath": "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm",
+  "duration": 30
 }
