@@ -19,9 +19,7 @@ export const VideoLayer: React.FC<{
 			}}>
 			<Video
         src={videoPath}
-        // src="https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
         startFrom={transitionStart} // if video is 30fps, then it will start at 2s
-        // endAt={transitionStart + ((inputProps?.duration ?? 20) * 30)} // if video is 30fps, then it will end at 4s
         style={{
           width: videoConfig.width,
 				  height: videoConfig.height,

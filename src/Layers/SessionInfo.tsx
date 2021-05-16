@@ -49,7 +49,26 @@ export const SessionInfo: React.FC<{
 					}}>
 						{sessionTitle}
 					</span>
-					<Img src={logo} style={{ width: 500 }} />
+					<div style={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: "center",
+					}}>
+						<Img src={logo} style={{ width: 500 }} />
+						<span style={{
+							fontSize: 40,
+							margin: 0,
+						}}>
+							September 26-26 | Online
+					</span>
+					<span style={{
+							fontSize: 40,
+							margin: 0,
+						}}>
+							2021.ubucon.asia
+					</span>
+					</div>
+
 				</div>
 				<div style={{
 					marginLeft: 30,

@@ -4,7 +4,13 @@ import { VideoSeqs } from './VideoSeqs';
 import { SessionInfo } from './Layers/SessionInfo';
 import { Sponsors } from './Layers/Sponsors';
 import { VideoLayer } from './Layers/VideoLayer';
-import profile from './Images/profile_placeholder.png';
+
+const defaultVideoPath = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
+const defaultProfilePath = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
+const defaultSponsorLogos = [
+	"https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png",
+	"https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png"
+]
 
 export const RemotionVideo: React.FC = () => {
 	const inputProps = getInputProps()
@@ -19,20 +25,21 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					videoPath: "",
+					videoPath: defaultVideoPath ,
 					sessionTitle: "Big Buck Bunny",
-					speakers:[
+					speakers: [
 						{
 							"name": "Bunny",
 							"bio": "Big Buck Bunny",
-							"photoPath": ""
+							"photoPath": defaultProfilePath
 						},
 						{
 							"name": "Rodents",
 							"bio": "Three Villains",
-							"photoPath": ""
+							"photoPath": defaultProfilePath
 						}
-					]
+					],
+					sponsorLogos: defaultSponsorLogos
 				}}
 			/>
 			<Composition
@@ -44,16 +51,16 @@ export const RemotionVideo: React.FC = () => {
 				height={1080}
 				defaultProps={{
 					sessionTitle: "Big Buck Bunny",
-					speakers:[
+					speakers: [
 						{
 							"name": "Bunny",
 							"bio": "Big Buck Bunny",
-							"photoPath": ""
+							"photoPath": defaultProfilePath
 						},
 						{
 							"name": "Rodents",
 							"bio": "Three Villains",
-							"photoPath": ""
+							"photoPath": defaultProfilePath
 						}
 					]
 				}}
@@ -65,6 +72,9 @@ export const RemotionVideo: React.FC = () => {
 				fps={30}
 				width={1920}
 				height={1080}
+				defaultProps={{
+					sponsorLogos: defaultSponsorLogos
+				}}
 			/>
 			<Composition
 				id="VideoLayer"
@@ -74,7 +84,7 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					videoPath: "",
+					videoPath: defaultVideoPath,
 					transitionStart: 200
 				}}
 			/>

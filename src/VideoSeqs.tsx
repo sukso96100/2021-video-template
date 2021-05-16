@@ -6,11 +6,13 @@ import { VideoLayer } from './Layers/VideoLayer';
 export const VideoSeqs: React.FC<{
 	speakers: Array<SpeakerData>;
 	sessionTitle: string;
-	videoPath: string
+	videoPath: string,
+	sponsorLogos: Array<string>
 }> = ({
 	speakers,
 	sessionTitle,
-	videoPath
+	videoPath,
+	sponsorLogos
 }) => {
 		const frame = useCurrentFrame();
 		const videoConfig = useVideoConfig();
@@ -48,7 +50,9 @@ export const VideoSeqs: React.FC<{
 							speakers={speakers} />
 					</Sequence>
 					<Sequence from={20} durationInFrames={videoConfig.durationInFrames}>
-						<Sponsors transitionStart={transitionStart} />
+						<Sponsors
+							// transitionStart={transitionStart}
+							sponsorLogos={sponsorLogos} />
 					</Sequence>
 					<Sequence
 						from={200}

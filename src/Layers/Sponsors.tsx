@@ -1,10 +1,10 @@
-import { interpolate, spring, useCurrentFrame, useVideoConfig, Img } from 'remotion';
+import { useCurrentFrame, useVideoConfig, Img } from 'remotion';
 
 import logo from '../Images/placeholder.png';
 
 export const Sponsors: React.FC<{
-	transitionStart: number;
-}> = ({ transitionStart }) => {
+	sponsorLogos: Array<string>;
+}> = ({ sponsorLogos }) => {
 	const videoConfig = useVideoConfig();
 	const frame = useCurrentFrame();
 	const bottom = frame > 20 ? 50 : 30 + frame;
@@ -14,32 +14,39 @@ export const Sponsors: React.FC<{
 			style={{
 				width: videoConfig.width,
 				height: videoConfig.height,
-				flex: 1, justifyContent: "center", alignItems: "center",
+				flex: 1, justifyContent: "center",
+				alignItems: "center",
 				opacity: opacity,
 				fontFamily: 'Ubuntu',
-				paddingLeft: 30
+				paddingLeft: 30,
+				color: 'white'
 			}}>
-			
 			<div style={{
 				marginLeft: 20,
 				marginRight: 20,
 				display: 'flex',
-				flexDirection: 'row',
+				flexDirection: 'column',
 				position: 'absolute',
 				bottom: bottom,
-				flexFlow: 'wrap'
 			}}>
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
-				<Img src={logo} style={{ height: 100 }} />
+				<span style={{
+					fontSize: 40,
+					margin: 10
+				}}>
+					Sponsored by
+				</span>
+				<div style={{
+					display: 'flex',
+					flexDirection: 'row',
+					flexFlow: 'wrap'
+				}}>
+					{sponsorLogos.map((item, index) => (
+						<Img key={index} src={item} style={{ height: 100, margin: 10 }} />
+					))}
+				</div>
 			</div>
+
+
 
 		</div>
 	);
