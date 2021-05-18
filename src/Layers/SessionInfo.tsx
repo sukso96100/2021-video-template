@@ -4,18 +4,13 @@ import startup from '../Sounds/startup.mp3';
 import { Audio } from 'remotion';
 import '../Fonts/font.css'
 
-export type SpeakerData = {
-	"name": string;
-	"bio": string;
-	"photoPath": string;
-}
+
 
 export const SessionInfo: React.FC<{
 	sessionTitle: string;
-	speakers: Array<SpeakerData>;
+	
 }> = ({
 	sessionTitle,
-	speakers
 }) => {
 		const videoConfig = useVideoConfig();
 		const frame = useCurrentFrame();
@@ -82,49 +77,7 @@ export const SessionInfo: React.FC<{
 						flexFlow: 'wrap',
 						marginTop: 10
 					}}>
-						{speakers.map((item, index) => (
-							<div style={{
-								border: 'solid white',
-								display: 'flex',
-								flexDirection: 'row',
-								borderRadius: 75,
-								height: 150,
-								marginRight: 10
-							}}
-								key={index}>
-								<div style={{
-									background: `url(${item.photoPath}) no-repeat center`,
-									backgroundSize: "cover",
-									width: 150,
-									height: 150,
-									borderRadius: "100%",
-									marginTop: -3,
-									marginLeft: -3
-								}} />
-								<div style={{
-									display: 'flex',
-									flexDirection: 'column',
-									marginRight: 60,
-									marginLeft: 10
-								}}>
-									<span style={{
-										fontSize: 40,
-										marginTop: 20,
-										marginLeft: 10,
-										fontWeight: 'bold'
-									}}>
-										{item.name}
-									</span>
-									<span style={{
-										fontSize: 30,
-										marginLeft: 10,
-										marginTop: 10
-									}}>
-										{item.bio}
-									</span>
-								</div>
-							</div>
-						))}
+					
 					</div>
 				</div>
 

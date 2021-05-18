@@ -1,30 +1,31 @@
 import { interpolate, Sequence, useCurrentFrame, useVideoConfig, interpolateColors, getInputProps } from 'remotion';
-import { SessionInfo, SpeakerData } from './Layers/SessionInfo';
-import { Sponsors } from './Layers/Sponsors';
+import { SessionInfo } from './Layers/SessionInfo';
+import { SpeakerData, Speakers } from './Layers/Speakers';
+import { Sponsors, SponsorsData } from './Layers/Sponsors';
 import { VideoLayer } from './Layers/VideoLayer';
 
 export const VideoSeqs: React.FC<{
 	speakers: Array<SpeakerData>;
 	sessionTitle: string;
 	videoPath: string,
-	sponsorLogos: Array<string>
+	sponsorsData: Array<SponsorsData>
 }> = ({
 	speakers,
 	sessionTitle,
 	videoPath,
-	sponsorLogos
+	sponsorsData
 }) => {
 		const frame = useCurrentFrame();
 		const videoConfig = useVideoConfig();
 		const inputProps = getInputProps()
 
 		const bgColorA = interpolateColors(frame,
-			[0, 200],
-			['#E95420', '#5E2750']
+			[0, 100, 200],
+			['#E95420', '#5E2750', '#F6BBA6']
 		);
 		const bgColorB = interpolateColors(frame,
-			[0, 200],
-			['#5E2750', '#E95420']
+			[0, 100, 200],
+			['#5E2750', '#E95420', '#BEA8B9']
 		);
 		const opacity = interpolate(
 			frame,
@@ -44,24 +45,29 @@ export const VideoSeqs: React.FC<{
 			}}>
 				<div style={{ opacity }}>
 					<Sequence from={0}
-						durationInFrames={videoConfig.durationInFrames}>
+						durationInFrames={100}>
 						<SessionInfo
 							sessionTitle={sessionTitle}
+						/>
+					</Sequence>
+					<Sequence from={20} durationInFrames={80}>
+						<Speakers
 							speakers={speakers} />
 					</Sequence>
-					<Sequence from={20} durationInFrames={videoConfig.durationInFrames}>
-						<Sponsors
-							// transitionStart={transitionStart}
-							sponsorLogos={sponsorLogos} />
+					<Sequence from={100} durationInFrames={50}>
+						<Sponsors sponsorsData={[sponsorsData[0], sponsorsData[1]]}/>
+					</Sequence>
+					<Sequence from={150} durationInFrames={50}>
+						<Sponsors sponsorsData={[sponsorsData[2], sponsorsData[3]]}/>
 					</Sequence>
 					<Sequence
 						from={200}
 						durationInFrames={(inputProps?.duration ?? 20) * 30}>
-							<VideoLayer
-								transitionStart={200}
-								videoPath={videoPath}
-							/>
-						</Sequence>
+						<VideoLayer
+							transitionStart={200}
+							videoPath={videoPath}
+						/>
+					</Sequence>
 				</div>
 			</div>
 		);

@@ -2,14 +2,46 @@ import { Composition, delayRender, getInputProps, continueRender } from 'remotio
 import { useState, useEffect } from 'react';
 import { VideoSeqs } from './VideoSeqs';
 import { SessionInfo } from './Layers/SessionInfo';
-import { Sponsors } from './Layers/Sponsors';
+import { Speakers } from './Layers/Speakers';
 import { VideoLayer } from './Layers/VideoLayer';
+import { Sponsors } from './Layers/Sponsors';
 
+const defaultSessionTitle = "Big Buck Bunny";
 const defaultVideoPath = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 const defaultProfilePath = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
-const defaultSponsorLogos = [
-	"https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png",
-	"https://github.com/ubucon-asia/2021/raw/main/content/hosts/ubuntu-kr/logo.png"
+const defualtSpeakersData = [
+	{
+		"name": "Bunny",
+		"bio": "Big Buck Bunny",
+		"photoPath": defaultProfilePath
+	},
+	{
+		"name": "Rodents",
+		"bio": "Three Villains",
+		"photoPath": defaultProfilePath
+	}
+];
+const defaultSponsorData = [
+	{"class": "Diamond", "logos":[
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+	]},
+	{"class": "Gold", "logos":[
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+	]},
+	{"class": "Silver", "logos":[
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+	]},
+	{"class": "Video Recording/Internalization support", "logos":[
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+	]}
 ]
 
 export const RemotionVideo: React.FC = () => {
@@ -25,21 +57,10 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					videoPath: defaultVideoPath ,
-					sessionTitle: "Big Buck Bunny",
-					speakers: [
-						{
-							"name": "Bunny",
-							"bio": "Big Buck Bunny",
-							"photoPath": defaultProfilePath
-						},
-						{
-							"name": "Rodents",
-							"bio": "Three Villains",
-							"photoPath": defaultProfilePath
-						}
-					],
-					sponsorLogos: defaultSponsorLogos
+					videoPath: defaultVideoPath,
+					sessionTitle: defaultSessionTitle,
+					speakers: defualtSpeakersData,
+					sponsorsData: defaultSponsorData
 				}}
 			/>
 			<Composition
@@ -50,30 +71,46 @@ export const RemotionVideo: React.FC = () => {
 				width={1920}
 				height={1080}
 				defaultProps={{
-					sessionTitle: "Big Buck Bunny",
-					speakers: [
-						{
-							"name": "Bunny",
-							"bio": "Big Buck Bunny",
-							"photoPath": defaultProfilePath
-						},
-						{
-							"name": "Rodents",
-							"bio": "Three Villains",
-							"photoPath": defaultProfilePath
-						}
-					]
+					sessionTitle: defaultSessionTitle
 				}}
 			/>
 			<Composition
-				id="Sponsors"
-				component={Sponsors}
+				id="Speakers"
+				component={Speakers}
 				durationInFrames={200}
 				fps={30}
 				width={1920}
 				height={1080}
 				defaultProps={{
-					sponsorLogos: defaultSponsorLogos
+					speakers: defualtSpeakersData
+				}}
+			/>
+			<Composition
+				id="SponsorsDiaAndGold"
+				component={Sponsors}
+				durationInFrames={50}
+				fps={30}
+				width={1920}
+				height={1080}
+				defaultProps={{
+					sponsorsData: [
+						defaultSponsorData[0],
+						defaultSponsorData[1]
+					]
+				}}
+			/>
+			<Composition
+				id="SponsorsSilverAndOthers"
+				component={Sponsors}
+				durationInFrames={50}
+				fps={30}
+				width={1920}
+				height={1080}
+				defaultProps={{
+					sponsorsData: [
+						defaultSponsorData[2],
+						defaultSponsorData[3]
+					]
 				}}
 			/>
 			<Composition
