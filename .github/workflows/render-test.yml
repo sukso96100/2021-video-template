@@ -13,5 +13,5 @@ jobs:
       - run: bash make_parms.sh
       - uses: actions/upload-artifact@v2
         with:
-          name: out.mp4
-          path: out.mp4
+          name: videos
+          path: videos/*
