@@ -1,5 +1,4 @@
 {
-  "sessionTitle": "Big Buck Bunny",
   "speakers": [
     {
       "name": "Bunny",
@@ -16,7 +15,6 @@
     "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
     "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
   ],
-  "videoPath": ,
   "duration": 30,
   "sponsors":[
     {"class": "Diamond", "logos":[
