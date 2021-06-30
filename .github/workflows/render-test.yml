@@ -10,8 +10,7 @@ jobs:
       - uses: actions/setup-node@main
       - run: sudo apt update
       - run: sudo apt install ffmpeg
-      - run: npm i
-      - run: npm run build
+      - run: bash make_parms.sh
       - uses: actions/upload-artifact@v2
         with:
           name: out.mp4
