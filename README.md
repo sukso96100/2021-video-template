@@ -10,6 +10,12 @@ Welcome to your Remotion project!
 
 ## Commands
 
+## To Build 
+Go to video_list.txt and Edit Video Path 
+
+and run Github Action Render video
+
+
 **Start Preview**
 
 ```console
@@ -47,7 +53,3 @@ Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurge
 ## License
 
 Notice that for some entities a company license is needed. Read [the terms here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).
-
-## To Build 
-Go to video_list.txt and Edit Video Path 
-and run Github Action Render video
