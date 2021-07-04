@@ -1,6 +1,6 @@
 on:
   workflow_dispatch:
-name: Render video
+name: Render base
 jobs:
   render:
     name: Render base
