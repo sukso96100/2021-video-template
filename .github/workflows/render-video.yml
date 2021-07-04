@@ -1,20 +1,18 @@
 on:
   workflow_dispatch:
-name: upload test
+name: Render video
 jobs:
   render:
-    name: Render video
+    name: Render base
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
       - uses: actions/setup-node@main
       - run: sudo apt update
       - run: sudo apt install ffmpeg
-      - run: mkdir test
-      - run: touch test/test1
-      - run: touch test/test2
-      - run: touch test/test3
+      - run: npm i
+      - run: npm run build
       - uses: actions/upload-artifact@v2
         with:
-          name: my-test
-          path: test/*
+          name: out.mp4
+          path: out.mp4
