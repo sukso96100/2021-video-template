@@ -18,8 +18,8 @@ export const VideoLayer: React.FC<{
 				height: videoConfig.height,
 			}}>
 			<Video
-        src={videoPath}
-        startFrom={transitionStart} // if video is 30fps, then it will start at 2s
+        src={require('../Videos/'+videoPath)}
+        // startFrom={transitionStart} // if video is 30fps, then it will start at 2s
         style={{
           width: videoConfig.width,
 				  height: videoConfig.height,

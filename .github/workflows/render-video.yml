@@ -1,17 +1,44 @@
 on:
   workflow_dispatch:
 name: Render video
+
 jobs:
-  render:
-    name: Render video
+  initsrc:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@main
-      - uses: actions/setup-node@main
-      - run: sudo apt update
-      - run: sudo apt install ffmpeg
-      - run: bash make_parms.sh
-      - uses: actions/upload-artifact@v2
-        with:
-          name: videos
-          path: videos/*
+    - uses: actions/checkout@v2
+    - name: Install jq
+      run: |
+        sudo apt update
+        sudo apt install -yq jq
+    - name: Setup build matrix
+      id: set-matrix
+      run: |
+        python build_matrix.py 
+        JSON=$(cat ./matrix.json)
+        JSON="${JSON//'%'/%25}"
+        JSON="${JSON//$'\n'/%0A}"
+        JSON="${JSON//$'\r'/%0D}"
+        echo "::set-output name=matrix::${JSON}"
+  render:
+    needs: initsrc
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJSON(needs.initsrc.outputs.matrix)}}
+    steps:
+    - uses: actions/checkout@main
+    - uses: actions/setup-node@main
+    - name: Install ffmpeg
+      run: |
+        sudo apt update
+        sudo apt install -yq ffmpeg
+    - name: Install Node.js packages
+      run: npm install
+    - name: Render video
+      run: npx remotion render src/index.tsx VideoSeqs ${{matrix.path}}.mp4 --props=${{matrix.path}}.json
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{matrix.path}}.mp4
+        path: ${{matrix.path}}.mp4
