@@ -37,8 +37,8 @@ jobs:
     - name: Install Node.js packages
       run: npm install
     - name: Render video
-      run: npx remotion render src/index.tsx VideoSeqs ${{matrix.path}}.mp4 --props=${{matrix.path}}.json
+      run: npx remotion render src/index.tsx VideoSeqs ${{matrix.output}} --props=params/${{matrix.path}}
     - uses: actions/upload-artifact@v2
       with:
-        name: ${{matrix.path}}.mp4
-        path: ${{matrix.path}}.mp4
+        name: ${{matrix.output}}
+        path: ${{matrix.output}}
