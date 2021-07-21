@@ -1,0 +1,9 @@
+{
+    "include": [
+        {
+            "path": "bigbuckbunny.json",
+            "output": "bigbuckbunny.mp4",
+            "videoPath": "big-buck-bunny_trailer.webm"
+        }
+    ]
+}
