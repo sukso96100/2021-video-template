@@ -2,6 +2,10 @@ on:
   workflow_dispatch:
 name: Render video
 
+env:
+  BUCKET_IN: video_bucket_in
+  BUCKET_OUT: video_bucket_out
+
 jobs:
   initsrc:
     runs-on: ubuntu-latest
@@ -9,10 +13,6 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - uses: actions/checkout@v2
-    - name: Install jq
-      run: |
-        sudo apt update
-        sudo apt install -yq jq
     - name: Setup build matrix
       id: set-matrix
       run: |
@@ -30,15 +30,31 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - uses: actions/setup-node@main
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+        components: gsutil
     - name: Install ffmpeg
       run: |
         sudo apt update
         sudo apt install -yq ffmpeg
     - name: Install Node.js packages
       run: npm install
+    - name: Download video file
+      run: |
+        gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.videoPath }} src/Videos/
     - name: Render video
       run: npx remotion render src/index.tsx VideoSeqs ${{matrix.output}} --props=params/${{matrix.path}}
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{matrix.output}}
-        path: ${{matrix.output}}
+    - name: Extract FLAC from rendered video
+      run: ffmpeg -y -i ${{matrix.output}} -ac 1 ${{matrix.output}}.flac
+    - name: Upload output files
+      run: | 
+        gsutil cp ${{matrix.output}} gs://${{env.BUCKET_OUT}}/
+        gsutil cp ${{matrix.output}}.flac gs://${{env.BUCKET_OUT}}/
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: ${{matrix.output}}
+    #     path: ${{matrix.output}}
