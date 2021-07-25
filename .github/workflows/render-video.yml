@@ -4,7 +4,7 @@ name: Render video
 
 env:
   BUCKET_IN: video_bucket_in
-  BUCKET_OUT: video_bucket_out
+  BUCKET_OUT: ubucon_bucket_in
 
 jobs:
   initsrc:
