@@ -1,0 +1,28 @@
+{
+  "videoPath": "oem_metapackages_concourse_ci.mp4",
+  "speakers": [
+    {
+      "name": "Shih-Yuan Lee (FourDollars)",
+      "bio": "Software Engineer, Canonical",
+      "photoPath": "https://api.eventyay.com/static/media/users/5716/thumbnail/Z3JUbXNTZz/f768f713-0277-4355-9970-3e19a83bd947.jpg"
+    }
+  ],
+  "sponsorLogos": [
+    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
+    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
+  ],
+  "duration": 2687,
+  "sponsors":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}
