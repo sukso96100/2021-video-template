@@ -30,6 +30,8 @@ jobs:
     steps:
     - uses: actions/checkout@main
     - uses: actions/setup-node@main
+      with:
+        node-version: '16'
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
