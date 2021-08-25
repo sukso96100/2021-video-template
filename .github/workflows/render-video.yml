@@ -3,8 +3,8 @@ on:
 name: Render video
 
 env:
-  BUCKET_IN: video_bucket_in
-  BUCKET_OUT: ubucon_bucket_in
+  BUCKET_IN: ubucon-asia-2021-video-in
+  BUCKET_OUT: ubucon-asia-2021-video-out
 
 jobs:
   initsrc:
