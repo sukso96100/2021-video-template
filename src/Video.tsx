@@ -1,9 +1,7 @@
-import { Composition, delayRender, getInputProps, continueRender } from 'remotion';
-import { useState, useEffect } from 'react';
+import { Composition, getInputProps } from 'remotion';
 import { VideoSeqs } from './VideoSeqs';
 import { SessionInfo } from './Layers/SessionInfo';
 import { Speakers } from './Layers/Speakers';
-import { VideoLayer } from './Layers/VideoLayer';
 import { Sponsors } from './Layers/Sponsors';
 
 const defaultSessionTitle = "Big Buck Bunny";
@@ -53,12 +51,10 @@ export const RemotionVideo: React.FC = () => {
 				id="VideoSeqs"
 				component={VideoSeqs}
 				durationInFrames={200}
-				// durationInFrames={200 + ((inputProps?.duration ?? 20) * 30)}
 				fps={30}
 				width={1920}
 				height={1080}
 				defaultProps={{
-					// videoPath: defaultVideoPath,
 					sessionTitle: defaultSessionTitle,
 					speakers: defualtSpeakersData,
 					sponsorsData: defaultSponsorData
@@ -114,18 +110,6 @@ export const RemotionVideo: React.FC = () => {
 					]
 				}}
 			/>
-			{/* <Composition
-				id="VideoLayer"
-				component={VideoLayer}
-				fps={30}
-				durationInFrames={(inputProps?.duration ?? 20) * 30}
-				width={1920}
-				height={1080}
-				defaultProps={{
-					videoPath: defaultVideoPath,
-					transitionStart: 200
-				}}
-			/> */}
 		</>
 	);
 };

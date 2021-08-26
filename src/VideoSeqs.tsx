@@ -2,17 +2,14 @@ import { interpolate, Sequence, useCurrentFrame, useVideoConfig, interpolateColo
 import { SessionInfo } from './Layers/SessionInfo';
 import { SpeakerData, Speakers } from './Layers/Speakers';
 import { Sponsors, SponsorsData } from './Layers/Sponsors';
-import { VideoLayer } from './Layers/VideoLayer';
 
 export const VideoSeqs: React.FC<{
 	speakers: Array<SpeakerData>;
 	sessionTitle: string;
-	// videoPath: string,
 	sponsorsData: Array<SponsorsData>
 }> = ({
 	speakers,
 	sessionTitle,
-	// videoPath,
 	sponsorsData
 }) => {
 		const frame = useCurrentFrame();
@@ -60,14 +57,6 @@ export const VideoSeqs: React.FC<{
 					<Sequence from={150} durationInFrames={50}>
 						<Sponsors sponsorsData={[sponsorsData[2], sponsorsData[3]]}/>
 					</Sequence>
-					{/* <Sequence
-						from={200}
-						durationInFrames={(inputProps?.duration ?? 20) * 30}>
-						<VideoLayer
-							transitionStart={200}
-							videoPath={videoPath}
-						/>
-					</Sequence> */}
 				</div>
 			</div>
 		);
