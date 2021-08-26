@@ -1,5 +1,6 @@
 {
   "videoPath": "oem_metapackages_concourse_ci.mp4",
+  "sessionTitle": "OEM Metapackages Concourse CI",
   "speakers": [
     {
       "name": "Shih-Yuan Lee (FourDollars)",
@@ -12,7 +13,7 @@
     "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
   ],
   "duration": 2687,
-  "sponsors":[
+  "sponsorsData":[
     {"class": "Diamond", "logos":[
       "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
     ]},

@@ -1,5 +1,6 @@
 {
   "videoPath": "big-buck-bunny_trailer.webm",
+  "sessionTitle": "Big Buck Bunny",
   "speakers": [
     {
       "name": "Bunny",
@@ -17,7 +18,7 @@
     "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
   ],
   "duration": 32,
-  "sponsors":[
+  "sponsorsData":[
     {"class": "Diamond", "logos":[
       "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
     ]},
