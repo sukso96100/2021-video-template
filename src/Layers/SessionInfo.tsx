@@ -4,11 +4,8 @@ import startup from '../Sounds/startup.mp3';
 import { Audio } from 'remotion';
 import '../Fonts/font.css'
 
-
-
 export const SessionInfo: React.FC<{
 	sessionTitle: string;
-	
 }> = ({
 	sessionTitle,
 }) => {
@@ -55,32 +52,28 @@ export const SessionInfo: React.FC<{
 							margin: 0,
 						}}>
 							September 26-26 | Online
-					</span>
-					<span style={{
+						</span>
+						<span style={{
 							fontSize: 40,
 							margin: 0,
 						}}>
 							2021.ubucon.asia
-					</span>
+						</span>
 					</div>
-
 				</div>
 				<div style={{
 					marginLeft: 30,
 					display: 'flex',
 					flexDirection: 'column'
 				}}>
-
 					<div style={{
 						display: 'flex',
 						flexDirection: 'row',
 						flexFlow: 'wrap',
 						marginTop: 10
 					}}>
-					
 					</div>
 				</div>
-
 			</div>
 		);
 	};

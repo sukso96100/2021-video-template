@@ -1,6 +1,5 @@
 import { useCurrentFrame, useVideoConfig, Img } from 'remotion';
 
-import logo from '../Images/placeholder.png';
 export type SponsorsData = {
 	class: string,
 	logos: Array<string>
@@ -24,40 +23,39 @@ export const Sponsors: React.FC<{
 				paddingLeft: 30,
 				color: 'black'
 			}}>
-					{sponsorsData.map((item, index) => {
-						let logoHeight = 100;
-						switch(item.class){
-							case "Diamond": logoHeight = 250; break;
-							case "Gold": logoHeight = 200; break;
-							case "Silver": logoHeight = 170; break;
-							default: logoHeight = 150; break;
-						}
-						return (
-							<div style={{
-								margin: 20,
-								marginTop: marginTop,
-								display: 'flex',
-								flexDirection: 'column'
-							}}>
-								<span style={{
-									fontSize: 80,
-									margin: 10
-								}}>
-									{item.class}
-								</span>
-								<div style={{
-									display: 'flex',
-									flexDirection: 'row',
-									flexFlow: 'wrap',
-								}}>
-									{item.logos.map((item, index) => (
-										<Img key={index} src={item} style={{ height: logoHeight, margin: 10 }} />
-									))}
-								</div>
-							</div>
-						)
-					})}
-		
+			{sponsorsData.map((item, index) => {
+				let logoHeight = 100;
+				switch (item.class) {
+					case "Diamond": logoHeight = 250; break;
+					case "Gold": logoHeight = 200; break;
+					case "Silver": logoHeight = 170; break;
+					default: logoHeight = 150; break;
+				}
+				return (
+					<div style={{
+						margin: 20,
+						marginTop: marginTop,
+						display: 'flex',
+						flexDirection: 'column'
+					}}>
+						<span style={{
+							fontSize: 80,
+							margin: 10
+						}}>
+							{item.class}
+						</span>
+						<div style={{
+							display: 'flex',
+							flexDirection: 'row',
+							flexFlow: 'wrap',
+						}}>
+							{item.logos.map((item, index) => (
+								<Img key={index} src={item} style={{ height: logoHeight, margin: 10 }} />
+							))}
+						</div>
+					</div>
+				)
+			})}
 		</div>
 	);
 };
