@@ -7,7 +7,7 @@ import { VideoLayer } from './Layers/VideoLayer';
 import { Sponsors } from './Layers/Sponsors';
 
 const defaultSessionTitle = "Big Buck Bunny";
-const defaultVideoPath = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
+// const defaultVideoPath = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 const defaultProfilePath = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
 const defualtSpeakersData = [
 	{
@@ -52,12 +52,13 @@ export const RemotionVideo: React.FC = () => {
 			<Composition
 				id="VideoSeqs"
 				component={VideoSeqs}
-				durationInFrames={200 + ((inputProps?.duration ?? 20) * 30)}
+				durationInFrames={200}
+				// durationInFrames={200 + ((inputProps?.duration ?? 20) * 30)}
 				fps={30}
 				width={1920}
 				height={1080}
 				defaultProps={{
-					videoPath: defaultVideoPath,
+					// videoPath: defaultVideoPath,
 					sessionTitle: defaultSessionTitle,
 					speakers: defualtSpeakersData,
 					sponsorsData: defaultSponsorData
@@ -113,7 +114,7 @@ export const RemotionVideo: React.FC = () => {
 					]
 				}}
 			/>
-			<Composition
+			{/* <Composition
 				id="VideoLayer"
 				component={VideoLayer}
 				fps={30}
@@ -124,7 +125,7 @@ export const RemotionVideo: React.FC = () => {
 					videoPath: defaultVideoPath,
 					transitionStart: 200
 				}}
-			/>
+			/> */}
 		</>
 	);
 };
