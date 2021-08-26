@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: ${{fromJSON(needs.initsrc.outputs.matrix)}}
+      fail-fast: false
     steps:
     - uses: actions/checkout@main
     - uses: actions/setup-node@main
