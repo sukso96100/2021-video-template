@@ -48,8 +48,13 @@ jobs:
     - name: Download video file
       run: |
         gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.videoPath }} src/Videos/
-    - name: Render video
-      run: npx remotion render src/index.tsx VideoSeqs ${{matrix.output}} --props=params/${{matrix.path}} --concurrency 2
+    - name: Render Cover Video
+      run: |
+        npx remotion render src/index.tsx VideoSeqs cover_${{matrix.output}} --props=params/${{matrix.path}} 
+    - name: Concat Cover video and original video
+      run: |
+        ffmpeg -i cover_${{matrix.output}} -i src/Videos/${{ matrix.videoPath }} \
+          -filter_complex "[0:v:0][0:a:0][1:v:0][1:a:0]concat=n=2:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" ${{matrix.output}}
     - name: Extract FLAC from rendered video
       run: ffmpeg -y -i ${{matrix.output}} -ac 1 ${{matrix.output}}.flac
     - name: Upload output files
