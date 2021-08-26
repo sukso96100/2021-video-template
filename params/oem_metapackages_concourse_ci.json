@@ -8,11 +8,6 @@
       "photoPath": "https://api.eventyay.com/static/media/users/5716/thumbnail/Z3JUbXNTZz/f768f713-0277-4355-9970-3e19a83bd947.jpg"
     }
   ],
-  "sponsorLogos": [
-    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-    "https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png"
-  ],
-  "duration": 2687,
   "sponsorsData":[
     {"class": "Diamond", "logos":[
       "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
