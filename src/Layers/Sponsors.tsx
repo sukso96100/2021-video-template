@@ -25,12 +25,17 @@ export const Sponsors: React.FC<{
 			}}>
 			{sponsorsData.map((item, index) => {
 				let logoHeight = 100;
-				switch (item.class) {
-					case "Diamond": logoHeight = 250; break;
-					case "Gold": logoHeight = 200; break;
-					case "Silver": logoHeight = 170; break;
-					default: logoHeight = 150; break;
+				try{
+					switch (item.class) {
+						case "Diamond": logoHeight = 250; break;
+						case "Gold": logoHeight = 200; break;
+						case "Silver": logoHeight = 170; break;
+						default: logoHeight = 150; break;
+					}
+				}catch{
+					return (<div></div>);
 				}
+				
 				return (
 					<div style={{
 						margin: 20,
