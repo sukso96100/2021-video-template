@@ -5,7 +5,6 @@ import { Speakers } from './Layers/Speakers';
 import { Sponsors } from './Layers/Sponsors';
 
 const defaultSessionTitle = "Big Buck Bunny";
-// const defaultVideoPath = "https://dl8.webmfiles.org/big-buck-bunny_trailer.webm"
 const defaultProfilePath = "https://upload.wikimedia.org/wikipedia/commons/c/c5/Big_buck_bunny_poster_big.jpg"
 const defualtSpeakersData = [
 	{
@@ -13,11 +12,6 @@ const defualtSpeakersData = [
 		"bio": "Big Buck Bunny",
 		"photoPath": defaultProfilePath
 	},
-	{
-		"name": "Rodents",
-		"bio": "Three Villains",
-		"photoPath": defaultProfilePath
-	}
 ];
 const defaultSponsorData = [
 	{"class": "Diamond", "logos":[
@@ -25,25 +19,19 @@ const defaultSponsorData = [
 	]},
 	{"class": "Gold", "logos":[
 		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
 	]},
 	{"class": "Silver", "logos":[
 		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
 	]},
 	{"class": "Video Recording/Internalization support", "logos":[
-		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
 		"https://raw.githubusercontent.com/ubucon-asia/2021/main/content/hosts/ubuntu-kr/logo.png",
 	]}
 ]
 
 export const RemotionVideo: React.FC = () => {
-	const inputProps = getInputProps()
+	const inputProps  = getInputProps()
+	const videoWidth = inputProps?.videoWidth ?? 1920
+	const videoHeight = inputProps?.videoHeight ?? 1080
 
 	return (
 		<>
@@ -52,8 +40,8 @@ export const RemotionVideo: React.FC = () => {
 				component={VideoSeqs}
 				durationInFrames={200}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={videoWidth}
+				height={videoHeight}
 				defaultProps={{
 					sessionTitle: defaultSessionTitle,
 					speakers: defualtSpeakersData,
@@ -65,8 +53,8 @@ export const RemotionVideo: React.FC = () => {
 				component={SessionInfo}
 				durationInFrames={200}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={videoWidth}
+				height={videoHeight}
 				defaultProps={{
 					sessionTitle: defaultSessionTitle
 				}}
@@ -76,8 +64,8 @@ export const RemotionVideo: React.FC = () => {
 				component={Speakers}
 				durationInFrames={200}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={videoWidth}
+				height={videoHeight}
 				defaultProps={{
 					speakers: defualtSpeakersData
 				}}
@@ -87,8 +75,8 @@ export const RemotionVideo: React.FC = () => {
 				component={Sponsors}
 				durationInFrames={50}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={videoWidth}
+				height={videoHeight}
 				defaultProps={{
 					sponsorsData: [
 						defaultSponsorData[0],
@@ -101,8 +89,8 @@ export const RemotionVideo: React.FC = () => {
 				component={Sponsors}
 				durationInFrames={50}
 				fps={30}
-				width={1920}
-				height={1080}
+				width={videoWidth}
+				height={videoHeight}
 				defaultProps={{
 					sponsorsData: [
 						defaultSponsorData[2],
