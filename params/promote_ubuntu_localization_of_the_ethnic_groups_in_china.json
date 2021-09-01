@@ -1,0 +1,24 @@
+{
+  "videoPath": "promote_ubuntu_l10n_of_the_ethnic_groups_in_china_zh_cn.mkv",
+  "sessionTitle": "Promote Ubuntu localization of the ethnic groups in China",
+  "speakers": [
+    {
+      "name": "Burgess Chang",
+      "bio": "Software Engineer, Ubuntu Kylin",
+      "photoPath": "https://2021.ubucon.asia/sessions/promote_ubuntu_localization_of_the_ethnic_groups_in_china/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}
