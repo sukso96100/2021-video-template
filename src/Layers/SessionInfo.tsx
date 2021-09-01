@@ -29,7 +29,7 @@ export const SessionInfo: React.FC<{
 				<div style={{
 					display: 'flex',
 					flexDirection: 'row',
-					height: 200,
+					minHeight: 200,
 					alignItems: 'center',
 					marginLeft: 20,
 					marginRight: 20
