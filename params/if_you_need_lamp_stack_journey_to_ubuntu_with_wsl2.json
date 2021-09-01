@@ -1,0 +1,24 @@
+{
+  "videoPath": "journey_to_wsl2_ko.mp4",
+  "sessionTitle": "If you need LAMP Stack, Journey to Ubuntu with WSL2",
+  "speakers": [
+    {
+      "name": "Byongseung Cho",
+      "bio": "Technical Writer & Ubuntu Korea Community Member",
+      "photoPath": "https://2021.ubucon.asia/sessions/if_you_need_lamp_stack_journey_to_ubuntu_with_wsl2/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}
