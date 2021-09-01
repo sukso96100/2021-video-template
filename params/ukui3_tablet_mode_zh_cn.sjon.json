@@ -1,0 +1,24 @@
+{
+  "videoPath": "ukui3_tablet_mode_zh_cn.mp4",
+  "sessionTitle": "UKUI3 Technology Sharing In Tablet Mode",
+  "speakers": [
+    {
+      "name": "Zhang Chao",
+      "bio": "Community Engineer, Ubuntu Kylin",
+      "photoPath": "https://2021.ubucon.asia/sessions/ukui3_technology_sharing_in_tablet_mode/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}

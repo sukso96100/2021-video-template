@@ -1,0 +1,34 @@
+{
+  "videoPath": "contributhon_l10n_ko.mp4",
+  "sessionTitle": "Engaging new l10n contributors through Open Source Contributhon",
+  "speakers": [
+    {
+      "name": "Bokmi Han",
+      "bio": "Director of Open Source Software Promotion Team, National IT Industry Promotion Agency",
+      "photoPath": "https://2021.ubucon.asia/sessions/engaging_new_l10n_contributors_through_open_source_contributhon/bokmi_han.jpg"
+    },
+    {
+      "name": "Youngbin Han",
+      "bio": "Organizer, Ubuntu Korea Community",
+      "photoPath": "https://2021.ubucon.asia/sessions/engaging_new_l10n_contributors_through_open_source_contributhon/youngbin_han.jpg"
+    },
+    {
+      "name": "Joowon Jung",
+      "bio": "Undergraduate Student, Konkuk University",
+      "photoPath": "https://2021.ubucon.asia/sessions/engaging_new_l10n_contributors_through_open_source_contributhon/joowon_jung.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}

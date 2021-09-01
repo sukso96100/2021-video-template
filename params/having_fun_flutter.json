@@ -1,0 +1,24 @@
+{
+  "videoPath": "having_fun_flutter.mp4",
+  "sessionTitle": "Having fun with Flutter Desktop development",
+  "speakers": [
+    {
+      "name": "Rafal Wachol",
+      "bio": "Software Engineer, Flutter Community",
+      "photoPath": "https://2021.ubucon.asia/sessions/having_fun_with_flutter_desktop_development/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}

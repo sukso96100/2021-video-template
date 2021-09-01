@@ -1,0 +1,29 @@
+{
+  "videoPath": "klas_id.mp4",
+  "sessionTitle": "Getting Closer with Kelompok Linux Arek Suroboyo and Buaya Linux Repository Server",
+  "speakers": [
+    {
+      "name": "Fadhil Yori Hibatullah",
+      "bio": "Research Team, Kelompok Linux Arek Suroboyo",
+      "photoPath": "https://2021.ubucon.asia/sessions/getting_closer_with_kelompok_linux_arek_suroboyo_and_buaya_linux_repository_server/fadhil.jpg"
+    },
+    {
+      "name": "Muhamad Andhika Prasetya",
+      "bio": "Chairman, Kelompok Linux Arek Suroboyo",
+      "photoPath": "https://2021.ubucon.asia/sessions/getting_closer_with_kelompok_linux_arek_suroboyo_and_buaya_linux_repository_server/andhika.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}

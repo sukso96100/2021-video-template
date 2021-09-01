@@ -1,0 +1,24 @@
+{
+  "videoPath": "multipass_id.mp4",
+  "sessionTitle": "Private Lab Virtualization Using Multipass and Deploy Apps web-based on Ubuntu Server.",
+  "speakers": [
+    {
+      "name": "Nur Hamim",
+      "bio": "Product Operation Support, PT Biznet Gio Nusantara",
+      "photoPath": "https://2021.ubucon.asia/sessions/oem_metapackages__concourse_ci/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}
