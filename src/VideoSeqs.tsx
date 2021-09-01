@@ -17,12 +17,12 @@ export const VideoSeqs: React.FC<{
 		const inputProps = getInputProps()
 
 		const bgColorA = interpolateColors(frame,
-			[0, 100, 200],
-			['#E95420', '#5E2750', '#F6BBA6']
+			[0, 100, 110, 200],
+			['#E95420', '#5E2750', '#F6BBA6', '#F6BBA6']
 		);
 		const bgColorB = interpolateColors(frame,
-			[0, 100, 200],
-			['#5E2750', '#E95420', '#BEA8B9']
+			[0, 100, 110, 200],
+			['#5E2750', '#E95420', '#BEA8B9', '#BEA8B9']
 		);
 		const opacity = interpolate(
 			frame,
