@@ -40,6 +40,12 @@ jobs:
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         export_default_credentials: true
         components: gsutil
+    - name: Check if output already exists
+      run: |
+        if [ gsutil -q stat gs://${{env.BUCKET_OUT}}/${{matrix.output}} -eq 0 ]; then
+            echo "Output file already exists, Remove existing file first and try again."
+            exit 1
+        fi
     - name: Install ffmpeg
       run: |
         sudo apt update
@@ -56,11 +62,13 @@ jobs:
       run: |
         ffmpeg -i cover_${{matrix.output}} -i src/Videos/${{ matrix.videoPath }} \
           -filter_complex "[0:v:0][0:a:0][1:v:0][1:a:0]concat=n=2:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" ${{matrix.output}}
-    - name: Extract FLAC from rendered video
-      run: ffmpeg -y -i ${{matrix.output}} -ac 1 ${{matrix.output}}.flac
-    - name: Upload output files
+    - name: Upload rendered video file
       run: | 
         gsutil cp ${{matrix.output}} gs://${{env.BUCKET_OUT}}/
+    - name: Extract FLAC from rendered video
+      run: ffmpeg -y -i ${{matrix.output}} -ac 1 ${{matrix.output}}.flac
+    - name: Upload extracted FLAC file
+      run: | 
         gsutil cp ${{matrix.output}}.flac gs://${{env.BUCKET_OUT}}/
     # - uses: actions/upload-artifact@v2
     #   with:
