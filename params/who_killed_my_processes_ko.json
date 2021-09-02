@@ -1,0 +1,22 @@
+{
+  "videoPath": "who_killed_my_processes-leesoo_ko.mp4",
+  "sessionTitle": "Who 'kill'ed my processes?",
+  "speakers": [
+    {
+      "name": "Leesoo Ahn",
+      "bio": "Software Engineer",
+      "photoPath": "https://2021.ubucon.asia/sessions/who_killed_my_processes/profile.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://2021.ubucon.asia/sponsors/ubuntu/logo.png"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://2021.ubucon.asia/sponsors/microsoft/logo.png"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://2021.ubucon.asia/sponsors/cloudmate/logo.png"
+    ]}
+  ]
+}
