@@ -42,7 +42,7 @@ jobs:
         components: gsutil
     - name: Check if output already exists
       run: |
-        FILECHK=gsutil -q stat gs://${{env.BUCKET_OUT}}/${{matrix.output}}
+        FILECHK=$(gsutil -q stat gs://${{env.BUCKET_OUT}}/${{matrix.output}}; echo $?)
         if [ $FILECHK -eq 0 ]; then
             echo "Output file already exists, Remove existing file first and try again."
             exit 1
