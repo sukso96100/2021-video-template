@@ -28,12 +28,32 @@ export const SessionInfo: React.FC<{
 				<Audio src={startup} />
 				<div style={{
 					display: 'flex',
-					flexDirection: 'row',
+					flexDirection: 'column',
 					minHeight: 200,
-					alignItems: 'center',
+					alignItems: 'start',
 					marginLeft: 20,
 					marginRight: 20
 				}}>
+					<div style={{
+						display: 'flex',
+						flexDirection: 'row',
+						alignItems: 'center',
+					}}>
+						<Img src={logo} style={{ width: 500, marginLeft: -30 }} />
+						<span style={{
+							fontSize: 40,
+							margin: 0,
+						}}>
+							Sept. 26-26, 2021 <br/>
+							2021.ubucon.asia
+						</span>
+						<span style={{
+							fontSize: 40,
+							margin: 0,
+						}}>
+							
+						</span>
+					</div>
 					<span style={{
 						fontSize: 80,
 						margin: 0,
@@ -41,25 +61,6 @@ export const SessionInfo: React.FC<{
 					}}>
 						{sessionTitle}
 					</span>
-					<div style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: "center",
-					}}>
-						<Img src={logo} style={{ width: 500 }} />
-						<span style={{
-							fontSize: 40,
-							margin: 0,
-						}}>
-							September 26-26 | Online
-						</span>
-						<span style={{
-							fontSize: 40,
-							margin: 0,
-						}}>
-							2021.ubucon.asia
-						</span>
-					</div>
 				</div>
 				<div style={{
 					marginLeft: 30,
