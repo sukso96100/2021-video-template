@@ -45,7 +45,8 @@ export const Speakers: React.FC<{
 							flexDirection: 'row',
 							borderRadius: 75,
 							height: 150,
-							marginRight: 10
+							marginRight: 10,
+							marginBottom: 5
 						}}
 							key={index}>
 							<div style={{
