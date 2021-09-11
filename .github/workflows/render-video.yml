@@ -47,10 +47,10 @@ jobs:
             echo "Output file already exists, Remove existing file first and try again."
             exit 1
         fi
-    - name: Install ffmpeg
+    - name: Install ffmpeg and fonts
       run: |
         sudo apt update
-        sudo apt install -yq ffmpeg
+        sudo apt install -yq ffmpeg fonts-noto-cjk
     - name: Install Node.js packages
       run: npm install
     - name: Download video file
