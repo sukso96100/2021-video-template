@@ -2,7 +2,7 @@ import os
 import json
 
 include = []
-lsdir = "params/"
+lsdir = "split_params/"
 files = os.listdir(lsdir)
 for i in files:
   if i.endswith(".json"):
