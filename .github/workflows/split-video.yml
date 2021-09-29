@@ -60,11 +60,6 @@ jobs:
     - name: Upload rendered video file
       run: | 
         gsutil cp 1080_${{matrix.output}} gs://${{env.BUCKET_OUT}}/
-    - name: Extract FLAC from rendered video
-      run: ffmpeg -y -i 1080_${{matrix.output}} -ac 1 1080_${{matrix.output}}.flac
-    - name: Upload extracted FLAC file
-      run: | 
-        gsutil cp 1080_${{matrix.output}}.flac gs://${{env.BUCKET_OUT}}/
     # - uses: actions/upload-artifact@v2
     #   with:
     #     name: ${{matrix.output}}
