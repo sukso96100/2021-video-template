@@ -16,7 +16,7 @@ jobs:
     - name: Setup build matrix
       id: set-matrix
       run: |
-        python build_matrix.py 
+        python build_matrix_split.py 
         JSON=$(cat ./matrix.json)
         JSON="${JSON//'%'/%25}"
         JSON="${JSON//$'\n'/%0A}"
