@@ -1,48 +1,44 @@
 # UbuCon Asia 2021 Video template
-Welcome to your Remotion project!
 
-## Commands
+This repo is for React Remotion project that generated video cover with tempalte for UbuCon session recordings.
 
-## To Build 
-Go to video_list.txt and Edit Video Path 
+## Setting up local dev environment
+See remotion.dev docs.
 
-and run Github Action Render video
+## Parameter files
+Write parameter file that will be used to render video.
+Place it on `params` directory
+```json
+{
+  "videoPath": "<Name of the file placed in src/Videos>",
+  "sessionTitle": "<Session title here>",
+  "videoWidth" : 1920,
+  "videoHeight" : 1080,
+  "speakers": [
+    {
+      "name": "<Speaker name here>",
+      "bio": "<Speaker bio here>",
+      "photoPath": "https://path.to/speaker/profile/photo.jpg"
+    }
+  ],
+  "sponsorsData":[
+    {"class": "Diamond", "logos":[
+      "https://path.to/sponsor/logo/image.jpg"
+    ]},
+    {"class": "Gold", "logos":[
+      "https://path.to/sponsor/logo/image.jpg"
+    ]},
+    {"class": "Silver", "logos":[
+      "https://path.to/sponsor/logo/image.jpg"
+    ]},
+    {"class": "Video Recording/Internalization support", "logos":[
+    ]}
+  ]
+}
 
-
-**Start Preview**
-
-```console
-npm start
 ```
 
-**Render video**
-
-```console
-npm run build
+## Render with `npx`
+```bash
+npx remotion render src/index.tsx VideoSeqs <output_file_name> --props=params/<param_file_name>
 ```
-
-**Server render demo**
-
-```console
-npm run server
-```
-
-See [docs for server-side rendering](https://www.remotion.dev/docs/ssr) here.
-
-**Upgrade Remotion**
-
-```console
-npm run upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/JonnyBurger/remotion/issues/new).
-
-## License
-
-Notice that for some entities a company license is needed. Read [the terms here](https://github.com/JonnyBurger/remotion/blob/main/LICENSE.md).

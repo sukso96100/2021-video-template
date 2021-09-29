@@ -1,0 +1,71 @@
+on:
+  workflow_dispatch:
+name: Live recording split
+
+env:
+  BUCKET_IN: ubucon-asia-2021-live-recordings
+  BUCKET_OUT: ubucon-asia-2021-video-in
+
+jobs:
+  initsrc:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup build matrix
+      id: set-matrix
+      run: |
+        python build_matrix.py 
+        JSON=$(cat ./matrix.json)
+        JSON="${JSON//'%'/%25}"
+        JSON="${JSON//$'\n'/%0A}"
+        JSON="${JSON//$'\r'/%0D}"
+        echo "::set-output name=matrix::${JSON}"
+  render:
+    needs: initsrc
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJSON(needs.initsrc.outputs.matrix)}}
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@main
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        export_default_credentials: true
+        components: gsutil
+    - name: Check if output already exists
+      run: |
+        FILECHK=$(gsutil -q stat gs://${{env.BUCKET_OUT}}/${{matrix.output}}; echo $?)
+        if [ $FILECHK -eq 0 ]; then
+            echo "Output file already exists, Remove existing file first and try again."
+            exit 1
+        fi
+    - name: Install ffmpeg
+      run: |
+        sudo apt update
+        sudo apt install -yq ffmpeg
+    - name: Download video file
+      run: |
+        gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.source }} .
+    - name: Split video
+      run: |
+        ffmpeg -ss ${{ matrix.time_from }} -t ${{ matrix.to }} -i ${{matrix.source}} -acodec copy -vcodec copy ${{matrix.output}}
+    - name: Rescale video with lanzcos algorithm
+      run: |
+        ffmpeg -i ${{matrix.output}} -vf scale=1920x1080:flags=lanczos 1080_${{matrix.output}}
+    - name: Upload rendered video file
+      run: | 
+        gsutil cp 1080_${{matrix.output}} gs://${{env.BUCKET_OUT}}/
+    - name: Extract FLAC from rendered video
+      run: ffmpeg -y -i 1080_${{matrix.output}} -ac 1 1080_${{matrix.output}}.flac
+    - name: Upload extracted FLAC file
+      run: | 
+        gsutil cp 1080_${{matrix.output}}.flac gs://${{env.BUCKET_OUT}}/
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: ${{matrix.output}}
+    #     path: ${{matrix.output}}
