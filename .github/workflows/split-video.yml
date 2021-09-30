@@ -56,7 +56,7 @@ jobs:
         ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy ${{matrix.output}}
     - name: Rescale video with lanzcos algorithm
       run: |
-        ffmpeg -i ${{matrix.output}} -vf scale=1920x1080:flags=lanczos 1080_${{matrix.output}}
+        ffmpeg -i ${{matrix.output}} -max_muxing_queue_size 9999 -vf scale=1920x1080:flags=lanczos 1080_${{matrix.output}}
     - name: Upload rendered video file
       run: | 
         gsutil cp 1080_${{matrix.output}} gs://${{env.BUCKET_OUT}}/
