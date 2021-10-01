@@ -53,10 +53,7 @@ jobs:
         gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.source }} .
     - name: Split video
       run: |
-        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy split_${{matrix.output}}
-    - name: Rescale video with lanzcos algorithm
-      run: |
-        ffmpeg -i split_${{matrix.output}} -vf scale=1920x1080:flags=lanczos ${{matrix.output}}
+        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy ${{matrix.output}}
     - name: Upload rendered video file
       run: | 
         gsutil cp ${{matrix.output}} gs://${{env.BUCKET_OUT}}/
