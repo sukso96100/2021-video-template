@@ -53,13 +53,13 @@ jobs:
         gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.source }} .
     - name: Split video
       run: |
-        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy ${{matrix.output}}
+        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy split_${{matrix.output}}
     - name: Rescale video with lanzcos algorithm
       run: |
-        ffmpeg -i ${{matrix.output}} -max_muxing_queue_size 9999 -vf scale=1920x1080:flags=lanczos 1080_${{matrix.output}}
+        ffmpeg -i split_${{matrix.output}} -max_muxing_queue_size 9999 -vf scale=1920x1080:flags=lanczos ${{matrix.output}}
     - name: Upload rendered video file
       run: | 
-        gsutil cp 1080_${{matrix.output}} gs://${{env.BUCKET_OUT}}/
+        gsutil cp ${{matrix.output}} gs://${{env.BUCKET_OUT}}/
     # - uses: actions/upload-artifact@v2
     #   with:
     #     name: ${{matrix.output}}
