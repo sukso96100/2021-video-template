@@ -3,8 +3,8 @@ on:
 name: Live recording split
 
 env:
-  BUCKET_IN: ubucon-asia-2021-live-recordings
-  BUCKET_OUT: ubucon-asia-2021-video-in
+  BUCKET_IN: fossasia-2022-live-recordings
+  BUCKET_OUT: fossasia-2022-sessions
 
 jobs:
   initsrc:
@@ -30,17 +30,15 @@ jobs:
       fail-fast: false
     steps:
     - uses: actions/checkout@main
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        export_default_credentials: true
-        components: gsutil
+        role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
+        aws-region: ap-northeast-2
     - name: Check if output already exists
       run: |
-        FILECHK=$(gsutil -q stat gs://${{env.BUCKET_OUT}}/${{matrix.output}}; echo $?)
-        if [ $FILECHK -eq 0 ]; then
+        FILECHK=$(aws s3 ls s3://${{env.BUCKET_OUT}}/${{matrix.output}})
+        if [ -z $FILECHK ]; then
             echo "Output file already exists, Remove existing file first and try again."
             exit 1
         fi
@@ -50,13 +48,13 @@ jobs:
         sudo apt install -yq ffmpeg
     - name: Download video file
       run: |
-        gsutil cp gs://${{env.BUCKET_IN}}/${{ matrix.source }} .
+        aws s3 cp s3://${{env.BUCKET_IN}}/${{ matrix.source }} .
     - name: Split video
       run: |
         ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy ${{matrix.output}}
     - name: Upload rendered video file
       run: | 
-        gsutil cp ${{matrix.output}} gs://${{env.BUCKET_OUT}}/
+        aws s3 cp ${{matrix.output}} s3://${{env.BUCKET_OUT}}/
     # - uses: actions/upload-artifact@v2
     #   with:
     #     name: ${{matrix.output}}
