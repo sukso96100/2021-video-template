@@ -38,8 +38,8 @@ jobs:
         aws-region: ap-northeast-2
     - name: Check if output already exists
       run: |
-        FILECHK=$(aws s3 ls s3://${{env.BUCKET_OUT}}/${{matrix.output}})
-        if [ -z $FILECHK ]; then
+        FILECHK=$(aws s3api head-object --bucket ${{env.BUCKET_OUT}} --key ${{matrix.output}}; echo $?)
+        if [ $FILECHK -eq 0 ]; then
             echo "Output file already exists, Remove existing file first and try again."
             exit 1
         fi
