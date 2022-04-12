@@ -1,44 +1,35 @@
-# UbuCon Asia 2021 Video template
+# FOSSASIA Summit 2022 - Video cutting tools
 
-This repo is for React Remotion project that generated video cover with tempalte for UbuCon session recordings.
+This repo is for cutting session videos from live recordings and combining with cover image
 
-## Setting up local dev environment
-See remotion.dev docs.
+
 
 ## Parameter files
-Write parameter file that will be used to render video.
-Place it on `params` directory
+Write parameter file that will be used to cut out session videos.
+Place it on `split_params` directory as `.json` file
+
+Example:
 ```json
 {
-  "videoPath": "<Name of the file placed in src/Videos>",
-  "sessionTitle": "<Session title here>",
-  "videoWidth" : 1920,
-  "videoHeight" : 1080,
-  "speakers": [
-    {
-      "name": "<Speaker name here>",
-      "bio": "<Speaker bio here>",
-      "photoPath": "https://path.to/speaker/profile/photo.jpg"
-    }
-  ],
-  "sponsorsData":[
-    {"class": "Diamond", "logos":[
-      "https://path.to/sponsor/logo/image.jpg"
-    ]},
-    {"class": "Gold", "logos":[
-      "https://path.to/sponsor/logo/image.jpg"
-    ]},
-    {"class": "Silver", "logos":[
-      "https://path.to/sponsor/logo/image.jpg"
-    ]},
-    {"class": "Video Recording/Internalization support", "logos":[
-    ]}
-  ]
+  "source":"yt_day_2_part_1.mp4",
+  "title_image":"images/azure_database_workshop.jpg",
+  "time_from":"01:44:25.000",
+  "time_to":"02:38:58.000",
+  "output":"azure_database_workshop.mp4"
 }
 
 ```
 
-## Render with `npx`
-```bash
-npx remotion render src/index.tsx VideoSeqs <output_file_name> --props=params/<param_file_name>
-```
+- `source`: Choose one of these
+  - `yt_day_1_part_1.mp4`
+  - `yt_day_1_part_2.mp4`
+  - `yt_day_2_part_1.mp4`
+  - `yt_day_2_part_2.mp4`
+  - `yt_day_3_part_1.mp4`
+  - `yt_day_3_part_2.mp4`
+- `title_image`: One of images available in `images` directory of this repo. Make sure to add one on `images` directory if the image you want not exists yet.
+- `time_from`: When the session starts on the live recording file in `HH:MM:SS.mmm` format
+- `time_to`: When the session ends on the live recording file in `HH:MM:SS.mmm` format
+- `output`: Name of the resulting video file - ends with `.mp4`
+
+If there are some part that should be remove between `time_from` and `time_to`, Make sure to let me know when sending pull request
