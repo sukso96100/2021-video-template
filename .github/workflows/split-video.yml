@@ -59,7 +59,7 @@ jobs:
           images/fossasia.jpg in=0 out=100 -mix 30 -mixer luma \
           ${{matrix.title_image}} in=100 out=200 -mix 30 -mixer luma \
           video_${{matrix.output}} in=200 -mix 30 -mixer luma \
-          -consumer avformat:out.mp4 
+          -consumer avformat:${{matrix.output}}
     - name: Upload rendered video file
       run: | 
         aws s3 cp ${{matrix.output}} s3://${{env.BUCKET_OUT}}/
