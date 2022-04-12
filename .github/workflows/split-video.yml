@@ -43,16 +43,23 @@ jobs:
             echo "Output file already exists, Remove existing file first and try again."
             exit 1
         fi
-    - name: Install ffmpeg
+    - name: Install packages
       run: |
         sudo apt update
-        sudo apt install -yq ffmpeg
+        sudo apt install -yq ffmpeg melt
     - name: Download video file
       run: |
         aws s3 cp s3://${{env.BUCKET_IN}}/${{ matrix.source }} .
     - name: Split video
       run: |
-        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy ${{matrix.output}}
+        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy video_${{matrix.output}}
+    - name: Join image and video
+      run: |
+        melt \
+          images/fossasia.jpg in=0 out=100 -mix 30 -mixer luma \
+          ${{matrix.title_image}} in=100 out=200 -mix 30 -mixer luma \
+          video_${{matrix.output}} in=200 -mix 30 -mixer luma \
+          -consumer avformat:out.mp4 
     - name: Upload rendered video file
       run: | 
         aws s3 cp ${{matrix.output}} s3://${{env.BUCKET_OUT}}/
