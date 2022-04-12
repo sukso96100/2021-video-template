@@ -46,7 +46,7 @@ jobs:
     - name: Install packages
       run: |
         sudo apt update
-        sudo apt install -yq ffmpeg melt
+        sudo apt install -yq ffmpeg
     - name: Download video file
       run: |
         aws s3 cp s3://${{env.BUCKET_IN}}/${{ matrix.source }} .
@@ -55,11 +55,12 @@ jobs:
         ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy video_${{matrix.output}}
     - name: Join image and video
       run: |
-        melt \
-          images/fossasia.jpg in=0 out=100 -mix 30 -mixer luma \
-          ${{matrix.title_image}} in=100 out=200 -mix 30 -mixer luma \
-          video_${{matrix.output}} in=200 -mix 30 -mixer luma \
-          -consumer avformat:${{matrix.output}}
+        ffmpeg \
+          -loop 1 -framerate 24 -t 1 -i images/fossasia.jpg \
+          -loop 1 -framerate 24 -t 1 -i ${{matrix.title_image}} \
+          -i video_${{matrix.output}} \
+          -f lavfi -t 0.1 -i anullsrc=channel_layout=stereo:sample_rate=44100 \
+          -filter_complex "[0:v][3:a][1:v][3:a][2:v][2:a]concat=n=3:v=1:a=1" ${{matrix.output}}
     - name: Upload rendered video file
       run: | 
         aws s3 cp ${{matrix.output}} s3://${{env.BUCKET_OUT}}/
