@@ -21,12 +21,15 @@ Example:
 ```
 
 - `source`: Choose one of these
-  - `yt_day_1_part_1.mp4`
-  - `yt_day_1_part_2.mp4`
-  - `yt_day_2_part_1.mp4`
-  - `yt_day_2_part_2.mp4`
-  - `yt_day_3_part_1.mp4`
-  - `yt_day_3_part_2.mp4`
+  - YouTube recordings 
+    - `yt_day_1_part_1.mp4`
+    - `yt_day_1_part_2.mp4`
+    - `yt_day_2_part_1.mp4`
+    - `yt_day_2_part_2.mp4`
+    - `yt_day_3_part_1.mp4`
+    - `yt_day_3_part_2.mp4`
+  - BBB recordings
+    - `bbb_day_2.mp4` 
 - `title_image`: One of images available in `images` directory of this repo. Make sure to add one on `images` directory if the image you want not exists yet.
 - `time_from`: When the session starts on the live recording file in `HH:MM:SS.mmm` format
 - `time_to`: When the session ends on the live recording file in `HH:MM:SS.mmm` format
