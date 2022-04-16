@@ -52,7 +52,7 @@ jobs:
         aws s3 cp s3://${{env.BUCKET_IN}}/${{ matrix.source }} .
     - name: Split video
       run: |
-        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -c copy video_${{matrix.output}}
+        ffmpeg -i ${{matrix.source}} -ss ${{ matrix.time_from }} -to ${{ matrix.time_to }} -async 1 video_${{matrix.output}}
     - name: Join image and video
       run: |
         ffmpeg \
