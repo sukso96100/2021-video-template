@@ -11,7 +11,8 @@ Place it on `split_params` directory as `.json` file
 Example:
 ```json
 {
-  "source":"yt_day_2_part_1.mp4",
+  "source":"<File ID on Google Drive>",
+  "source_file":"yt_day_2_part_1.mp4",
   "title_image":"images/azure_database_workshop.jpg",
   "time_from":"01:44:25.000",
   "time_to":"02:38:58.000",
