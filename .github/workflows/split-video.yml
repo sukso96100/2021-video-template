@@ -34,7 +34,9 @@ jobs:
     - name: Install gdrive CLI
       run: go install github.com/prasmussen/gdrive@latest
     - name: Configure credential for gdrive CLI
-      run: echo $GDRIVE_CREDENTIAL > ~/.gdrive/token_v2.json
+      run: |
+        touch ~/.gdrive/token_v2.json
+        echo $GDRIVE_CREDENTIAL > ~/.gdrive/token_v2.json
       env: # Or as an environment variable
         GDRIVE_CREDENTIAL: ${{ secrets.GDRIVE_CREDENTIAL }}
     - name: Install packages
