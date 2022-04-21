@@ -21,18 +21,17 @@ Example:
 ```
 
 - `source`: Choose one of these
-  - YouTube recordings (Recommended For most type of sessions)
-    - `yt_day_1_part_1.mp4`
-    - `yt_day_1_part_2.mp4`
-    - `yt_day_2_part_1.mp4`
-    - `yt_day_2_part_2.mp4`
-    - `yt_day_3_part_1.mp4`
-    - `yt_day_3_part_2.mp4`
-  - BBB recordings (Recommended For most types of sessions. Except sessions that uses video focus layout such as panel discussions)
-    - `bbb_day_2_3_v2.mp4`: White backdrop with pattern 
-    - `bbb_day_2_3.mp4`: White backdrop
-    - `bbb_day_2.mp4`: Red backdrop
-    - `bbb_day_3.mp4`: Red backdrop
+
+| File name | Google Drive Fild ID | Description |
+|--|--|--|
+| bbb_day_2_3_v2.mp4 | 1OqKNK-aEF8mV-NJRte6p30h6b3Wlwzd7 | BBB recording of day 2~3 with White backdrop with pattern - Recommended For most types of sessions. Except sessions that uses video focus layout such as panel discussions |
+| yt_day_1_part_1.mp4 | 1JTC-lJ0n_a5rxX6cOrolumM4TkB8Y8tQ | YouTube recording - Recommended For most type of sessions |
+| yt_day_1_part_2.mp4 | 1mfO1XXlZXzhAufK_JC8XAwjWSbmuYwFC | YouTube recording - Recommended For most type of sessions |
+| yt_day_2_part_1.mp4 | 1M-sVDnwyaQS15OrojQiu4aNLxOZUh1gG | YouTube recording - Recommended For most type of sessions |
+| yt_day_2_part_2.mp4 | 1T7hrH0eYzc_11R3ugohEzqjrzfVRcabL | YouTube recording - Recommended For most type of sessions |
+| yt_day_3_part_1.mp4 | 17sAN_NRl_oprqbNQe538SG69190mV8o- | YouTube recording - Recommended For most type of sessions |
+| yt_day_3_part_2.mp4 | 1pLss6rV78YdNSLLxJ5qsHk_2Xw_FtqGu | YouTube recording - Recommended For most type of sessions |
+
 - `title_image`: One of images available in `images` directory of this repo. Make sure to add one on `images` directory if the image you want not exists yet.
 - `time_from`: When the session starts on the live recording file in `HH:MM:SS.mmm` format
 - `time_to`: When the session ends on the live recording file in `HH:MM:SS.mmm` format

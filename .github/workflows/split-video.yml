@@ -3,8 +3,8 @@ on:
 name: Live recording split
 
 env:
-  BUCKET_IN: fossasia-2022-live-recordings
-  BUCKET_OUT: fossasia-2022-sessions
+  BUCKET_IN: 1y0wC3gPNYJzUybbGDcnOA7GRR-8tTN_5
+  BUCKET_OUT: 1Od93No5XJ6Q_FMokWoGwIGamE7x4qhwT
 
 jobs:
   initsrc:
@@ -30,29 +30,23 @@ jobs:
       fail-fast: false
     steps:
     - uses: actions/checkout@main
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-northeast-2
-    - name: Check if output already exists
-      run: |
-        aws s3api head-object --bucket ${{env.BUCKET_OUT}} --key ${{matrix.output}} > /dev/null 2>&1 || not_exist=true
-        if ! [ $not_exist ]; then
-          echo "Output file already exists, Remove existing file first and try again."
-          exit 1
-        fi
+    - uses: actions/setup-go@v3
+    - name: Install gdrive CLI
+      run: go install github.com/prasmussen/gdrive@latest
+    - name: Configure credential for gdrive CLI
+      run: echo $GDRIVE_CREDENTIAL > ~/.gdrive/token_v2.json
+      env: # Or as an environment variable
+        GDRIVE_CREDENTIAL: ${{ secrets.GDRIVE_CREDENTIAL }}
     - name: Install packages
       run: |
         sudo apt update
         sudo apt install -yq ffmpeg
     - name: Download video file
       run: |
-        aws s3 cp s3://${{env.BUCKET_IN}}/${{ matrix.source }} .
+        gdrive download ${{ matrix.source }}
     - name: Split video
       run: |
-        ffmpeg -ss ${{ matrix.time_from }} -i ${{matrix.source}} -to ${{ matrix.time_to }} -c copy -copyts -avoid_negative_ts make_zero video_${{matrix.output}}
+        ffmpeg -ss ${{ matrix.time_from }} -i ${{matrix.source_file}} -to ${{ matrix.time_to }} -c copy -copyts -avoid_negative_ts make_zero video_${{matrix.output}}
     - name: Join image and video
       run: |
         ffmpeg \
@@ -62,8 +56,5 @@ jobs:
           -filter_complex "[0:v][2:a][1:v][1:a]concat=n=2:v=1:a=1" ${{matrix.output}}
     - name: Upload rendered video file
       run: | 
-        aws s3 cp ${{matrix.output}} s3://${{env.BUCKET_OUT}}/
-    # - uses: actions/upload-artifact@v2
-    #   with:
-    #     name: ${{matrix.output}}
-    #     path: ${{matrix.output}}
+        gdrive upload -p ${{env.BUCKET_OUT}} ${{matrix.output}}
+
